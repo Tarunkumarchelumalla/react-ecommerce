@@ -8,8 +8,8 @@ import TextField from '@mui/material/TextField';
 
 const Signup = () => {
   return (
-  <><div className=' bg-cyan-500 flex justify-center'>
-      <div className='h-screen w-full flex justify-center items-center max-w-[600px] bg-cyan-500  text-[#2A2A2A] p-4 '>
+  <><div className=' bg-gradient-to-bl from-cyan-500 to ...  flex justify-center shadow-current shadow-2xl'>
+      <div className='h-screen w-full flex justify-center items-center max-w-[600px]  text-[#2A2A2A] p-4 '>
  
         <form className='flex flex-col max-w-[450px] bg-white rounded-md lg:max-w-[350px] shadow-md w-full p-5 md:max-w-[400px] '>
 <div className='w-full flex'>
@@ -19,19 +19,19 @@ const Signup = () => {
 {/*  
         <input type="text" placeholder="Enter your name" className='border-2 my-4 p-2 rounded'></input> */}
         <div className='py-2 w-full flex flex-col'>
-        <TextField variant='standard' color="primary" label="Enter username" type='email' ></TextField>
+        <TextField variant='standard' color="secondary" label="Enter username" type='email' ></TextField>
         </div>
         <div className='py-2 w-full flex flex-col'>
-        <TextField variant='standard' label="Enter email"  ></TextField>
+        <TextField variant='standard' color="secondary" label="Enter email"  ></TextField>
         </div>
         <div className='py-2 w-full flex flex-col'>
-        <TextField variant='standard' label="Enter Password"  ></TextField>
+        <TextField variant='standard' color="secondary" label="Enter Password"  ></TextField>
         </div>
         <div className='py-2 w-full flex flex-col'>
-        <TextField variant='standard' label="Confirm Password"  ></TextField>
+        <TextField variant='standard' color="secondary" label="Confirm Password"  ></TextField>
         </div>
         <div className='py-2 w-full flex flex-col'>
-         <Button variant="contained" style={{"backgroundColor":"rgb(6 182 212)",}} className="bg-cyan-500">Signup</Button>
+         <Button variant="contained" style={{"backgroundColor":"rgb(6 182 212)",}} className="bg-cyan-300">Signup</Button>
         
 </div>
           <div className='flex w-full py-4 '><hr className=' w-full'/><p className='px-2'>or</p><br/><hr  className='w-full'></hr></div>

@@ -9,7 +9,7 @@ function Home2() {
     <div name="about" className='flex flex-col  w=full shadow-md rounded bg-cyan-300 mx-auto justify-center'>
          <div className='px-8 flex '>
          <p className=' inline text-2xl  text-[#2A2A2A] border-b-2 p-1 border-[#2A2A2A] cursor-pointer'>Our services</p></div>
-        <div className='grid grid-cols-2 px-5 py-5 sm:grid-cols-4 gap-8'>
+        <div className='grid grid-cols-1 px-5 py-5 sm:grid-cols-4 gap-8'>
              <div>
              <Card sx={{ maxWidth: 205 }}>
                 <div className='flex justify-center '>

@@ -3,8 +3,8 @@ import React from 'react'
 function Footer() {
   return (
     
-    <div className='w-full mt-[40px] bg-[#2A2A2A]'> 
-      <div className='grid grid-cols-2 gap-8 sm:grid-cols-4 text-cyan-500 px-10 py-2'>
+    <div className='w-full mt-[40px] bg-[#2A2A2A] rounded shadow-current shadow-xl'> 
+      <div className='grid grid-cols-1 gap-8 sm:grid-cols-4 text-cyan-500 px-10 py-2'>
         <div>
           <ul className=''>
             <p className='text-2xl border-b-4 border- white inline'> Socials</p>

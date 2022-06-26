@@ -9,5 +9,14 @@ export const theme=createTheme({
         secondary:{
             main:'#2A2A2A',
         }
-    }
+    },
+    typography: {
+        fontFamily: [
+          "Poppins",
+          "Roboto",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ].join(",")
+      }
 })

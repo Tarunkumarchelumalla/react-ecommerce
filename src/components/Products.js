@@ -15,20 +15,25 @@ function Products() {
         </div>
      
        
-        <div className='grid grid-cols-2 gap-8 py-8 sm:grid-cols-4  w-full  '>
+        <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full'>
         {Data.map(({ title, price, avatarUrl,imageUrl }) => (
-            <div className='flex flex-col justify-around h-[300px] basis-0 rounded w-[190px]'>
-            <div className=' shadow-md  '>
-                <div className='h-[100px]' >
-              <img src={imageUrl} width="50%" />
+            <div className='flex flex-col   basis-0 rounded w-full  px-4'>
+           
+                <div className='h-[100px] ' >
+              <img src={imageUrl} width="35%" />
+               
               </div>
-              <p className='text-[12px] h-[100px]'>{description}</p>
-              <p className='p h-[30px]' >Price:{price}</p>
-              <div className='flex justify-center h-[40px]'>
+              <div className='h-[100px]'>
+              <p className='py-2'>{description}</p>
+              </div>
+              <div>
+              <p className=' ' >Price:{price}</p>
+              </div>
+              <div className='flex justify-center'>
               <Button variant="contained" color="primary"> Add to card</Button>
               </div>
             </div>
-            </div>
+
             )
             )
 

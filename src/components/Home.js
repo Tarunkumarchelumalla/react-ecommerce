@@ -16,10 +16,10 @@ function Home() {
   <Navbaar/>
   </div>
   <div></div>
-  <div className='flex flex-col  mx-auto h-screen max-w-[900px] px-8 '>
-    {/* <div className='text-[#2A2A2A] rounded text-2xl py-2 '>
-      <Button  variant="contained" color="secondary" size="large" style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Buy here</Button><span className='animate-ping'>.</span>
-      </div> */}
+  <div className='flex flex-col  mx-auto h-screen max-w-[1100px] px-8 '>
+    <div className='text-[#2A2A2A] rounded text-2xl py-2 '>
+      <Button  variant="contained" color="secondary" size="large" style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Buy here</Button><span className='animate-ping '>.</span>
+    </div>
       <div className='py-5'>
      <p className='flex w-full text-[#2A2A2A] text-4xl font-extrabold py-2'> Products delivered in 3 days. One time Shop Make it here</p>
      <p className='py-2'>Any thing that you want will be here</p>
@@ -27,8 +27,8 @@ function Home() {
         <div className=''>
         <Button variant="contained" color='secondary'style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}>Order now</Button>
         </div>
-        <div className='px-4 '>
-        <Button variant="contained" endIcon={<ArrowDownwardOutlinedIcon  className='animate-bounce'/>} color='secondary'style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Viewsome</Button>
+        <div className='px-4 h-[20px]'>
+        <Button variant="contained"  endIcon={<ArrowDownwardOutlinedIcon style={{"fontSize":"1.5rem"}} className='animate-bounce'/>} color='secondary'style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Viewsome</Button>
         </div>
      </div>
     </div>
