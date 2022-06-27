@@ -4,8 +4,17 @@ import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import {Link} from 'react-router-dom';
+import {auth,db} from '../components/firebase/config'
+import {useNavigate} from 'react-router-dom'
+function Navbaar({user}) {
 
-function Navbaar() {
+  const history=useNavigate();
+  const handleLogout=()=>{
+    auth.signOut().then(()=>{
+        history('/');
+    })
+}
   const[nav,setNav]=useState(false);
   const handlemenu=()=>setNav(!nav);
 
@@ -24,14 +33,18 @@ function Navbaar() {
         <Button>About</Button>
         </li>
         <li>
-          <Button>  Products</Button>
+        <Button   onClick={handleLogout}>Logout</Button>
         
         </li>
         <li className=''>
         <Button  startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>}></Button>
         </li>
         <li className='' >
-      <Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}> Account</Button>
+          {user&&<>     <Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>{user}</Button></>
+}
+    {!user&&
+    <Link to="/"><Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>Signup/login</Button></Link>
+    }
                        
         </li>
     </ul>
@@ -48,7 +61,7 @@ function Navbaar() {
         <Button  style={{"fontSize":"1.5rem",}}>About</Button>
         </li>
         <li className='py-4'>
-          <Button  style={{"fontSize":"1.5rem",}}>  Products</Button>
+          <Button  style={{"fontSize":"1.5rem",}} onClick={handleLogout}>Logout</Button>
         
         </li>
         <li className='py-4'>
@@ -56,7 +69,11 @@ function Navbaar() {
      
         </li>
         <li className='py-4' >
-      <Button  style={{"fontSize":"1.5rem",}} startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}> Account</Button>
+        {user&&<>     <Button  style={{"fontSize":"1.5rem",}} startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>{user}</Button></>
+}
+    {!user&&<>
+    <Button  style={{"fontSize":"1.5rem",}}  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>Signup/login</Button></>
+    }
                        
         </li>
     </ul>

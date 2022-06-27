@@ -8,7 +8,13 @@ export const theme=createTheme({
         },
         secondary:{
             main:'#2A2A2A',
-        }
+        },
+        success:{
+           main:"#4caf50",
+        },
+        error:{
+           main:"#ef5350",
+        },
     },
     typography: {
         fontFamily: [

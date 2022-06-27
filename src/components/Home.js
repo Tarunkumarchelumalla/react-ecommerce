@@ -7,18 +7,37 @@ import Home2 from './Home2';
 import Products from './Products';
 import Contact from './Contact';
 import Footer from './Footer';
+import {auth,db} from '../components/firebase/config'
+import {useEffect,useState} from 'react'
 
 function Home() {
+  function GetCurrentUser(){
+    const [user, setUser]=useState(null);
+    useEffect(()=>{
+        auth.onAuthStateChanged(user=>{
+            if(user){
+                db.collection('users').doc(user.uid).get().then(snapshot=>{
+                    setUser(snapshot.data().Name);
+                })
+            }
+            else{
+                setUser(null);
+            }
+        })
+    },[])
+    return user;
+}
+const user = GetCurrentUser();
   return (
     <>
    
     <div className='h-[100px]'>
-  <Navbaar/>
+  <Navbaar user={user}/>
   </div>
   <div></div>
   <div className='flex flex-col  mx-auto h-screen max-w-[1100px] px-8 '>
     <div className='text-[#2A2A2A] rounded text-2xl py-2 '>
-      <Button  variant="contained" color="secondary" size="large" style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Buy here</Button><span className='animate-ping '>.</span>
+      <p className='text-4xl font-extrabold'>Welcome {user},</p>
     </div>
       <div className='py-5'>
      <p className='flex w-full text-[#2A2A2A] text-4xl font-extrabold py-2'> Products delivered in 3 days. One time Shop Make it here</p>
@@ -28,7 +47,7 @@ function Home() {
         <Button variant="contained" color='secondary'style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}>Order now</Button>
         </div>
         <div className='px-4 h-[20px]'>
-        <Button variant="contained"  endIcon={<ArrowDownwardOutlinedIcon style={{"fontSize":"1.5rem"}} className='animate-bounce'/>} color='secondary'style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Viewsome</Button>
+        <Button variant="contained"  endIcon={<ArrowDownwardOutlinedIcon style={{"fontSize":"1.5rem"}} className='animate-bounce'/>} style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Viewsome</Button>
         </div>
      </div>
     </div>
