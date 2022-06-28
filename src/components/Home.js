@@ -10,7 +10,7 @@ import Footer from './Footer';
 import {auth,db} from '../components/firebase/config'
 import {useEffect,useState} from 'react'
 
-function Home() {
+function Home({handleclick}) {
   function GetCurrentUser(){
     const [user, setUser]=useState(null);
     useEffect(()=>{
@@ -52,7 +52,7 @@ const user = GetCurrentUser();
      </div>
     </div>
     <Home2/>
-    <Products/>
+    <Products handleclick={handleclick}/>
     <Contact/>
     <Footer/>
 
