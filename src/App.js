@@ -8,6 +8,25 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import {useNavigate,Link} from 'react-router-dom'
 function App() {
+  function GetUsername(){
+
+
+    const [username, setUserName]=useState(null);
+    useEffect(()=>{
+        auth.onAuthStateChanged(user=>{
+            if(user){
+                db.collection('users').doc(user.uid).get().then(snapshot=>{
+                    setUserName(snapshot.data().Name);
+                })
+            }
+            else{
+                setUserName(null);
+            }
+        })
+    },[])
+    return username;
+}
+const username = GetUsername();
   function GetCurrentUser(){
     const [user, setUser]=useState(null);
     useEffect(()=>{
@@ -25,7 +44,7 @@ function App() {
 const user = GetCurrentUser();
 
   const history=useNavigate();
-  const [cart,setCart]=useState([]);
+  
 
 
  let Product;
@@ -54,8 +73,8 @@ const user = GetCurrentUser();
         <Route path="/" element={ <Signup/> } />
         <Route path="/Login" element={ <Login/> } />
      
-        <Route path="/Home" element={ <Home handleclick={handleclick}/> } />
-        <Route path="/Cart" element={ <Cart cart={cart}/> } />
+        <Route path="/Home" element={ <Home handleclick={handleclick} username={username}/> } />
+        <Route path="/Cart" element={ <Cart  username={username}/> } />
 
       </Routes>
     

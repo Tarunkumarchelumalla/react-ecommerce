@@ -7,7 +7,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import {Link} from 'react-router-dom';
 import {auth,db} from '../components/firebase/config'
 import {useNavigate} from 'react-router-dom'
-function Navbaar({user}) {
+function Navbaar({username}) {
 
   const history=useNavigate();
   const handleLogout=()=>{
@@ -27,7 +27,7 @@ function Navbaar({user}) {
     
     <ul className='hidden sm:flex w-full justify-center rounded py-2 text-white bg-[#2A2A2A] '>
         <li >
-        <Button >Home</Button>
+        <Button onClick={()=>history("/Home")}>Home</Button>
         </li>
         <li>
         <Button>About</Button>
@@ -37,12 +37,12 @@ function Navbaar({user}) {
         
         </li>
         <li className=''>
-        <Button  startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>}></Button>
+        <Button  startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>} onClick={()=>history("/Cart")}></Button>
         </li>
         <li className='' >
-          {user&&<>     <Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>{user}</Button></>
+          {username&&<>     <Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>{username}</Button></>
 }
-    {!user&&
+    {!username&&
     <Link to="/"><Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>Signup/login</Button></Link>
     }
                        
@@ -55,7 +55,7 @@ function Navbaar({user}) {
     <div className={!nav ?"hidden":'absolute top-0 m-0 left-0 w-full h-screen bg-[#2A2A2A] flex flex-col justify-center z-[10000000000] items-center text-white'}>
     <ul >
       <li className=' py-4 '>
-        <Button style={{"fontSize":"1.5rem",}}>Home</Button>
+        <Button style={{"fontSize":"1.5rem",}} onClick={()=>history("/Home")}>Home</Button>
         </li>
         <li className='py-4'>
         <Button  style={{"fontSize":"1.5rem",}}>About</Button>
@@ -65,13 +65,13 @@ function Navbaar({user}) {
         
         </li>
         <li className='py-4'>
-        <Button  style={{"fontSize":"1.5rem",}} startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary" style={{"fontSize":"1.5rem",}}/>}> cart</Button>
+        <Button  style={{"fontSize":"1.5rem",}} startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary" style={{"fontSize":"1.5rem",}}/>} onClick={()=>history("/Cart")}> cart</Button>
      
         </li>
         <li className='py-4' >
-        {user&&<>     <Button  style={{"fontSize":"1.5rem",}} startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>{user}</Button></>
+        {username&&<>     <Button  style={{"fontSize":"1.5rem",}} startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>{username}</Button></>
 }
-    {!user&&<>
+    {!username&&<>
     <Button  style={{"fontSize":"1.5rem",}}  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>Signup/login</Button></>
     }
                        

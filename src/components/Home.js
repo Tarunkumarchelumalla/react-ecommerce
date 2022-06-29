@@ -10,34 +10,19 @@ import Footer from './Footer';
 import {auth,db} from '../components/firebase/config'
 import {useEffect,useState} from 'react'
 
-function Home({handleclick}) {
-  function GetCurrentUser(){
-    const [user, setUser]=useState(null);
-    useEffect(()=>{
-        auth.onAuthStateChanged(user=>{
-            if(user){
-                db.collection('users').doc(user.uid).get().then(snapshot=>{
-                    setUser(snapshot.data().Name);
-                })
-            }
-            else{
-                setUser(null);
-            }
-        })
-    },[])
-    return user;
-}
-const user = GetCurrentUser();
+function Home({handleclick,username}) {
+  
+
   return (
     <>
    
     <div className='h-[100px]'>
-  <Navbaar user={user}/>
+  <Navbaar  username={username}/>
   </div>
   <div></div>
   <div className='flex flex-col  mx-auto h-screen max-w-[1100px] px-8 '>
     <div className='text-[#2A2A2A] rounded text-2xl py-2 '>
-      <p className='text-4xl font-extrabold'>Welcome {user},</p>
+      <p className='text-4xl font-extrabold'>Welcome {username},</p>
     </div>
       <div className='py-5'>
      <p className='flex w-full text-[#2A2A2A] text-4xl font-extrabold py-2'> Products delivered in 3 days. One time Shop Make it here</p>
