@@ -62,7 +62,7 @@ auth.createUserWithEmailAndPassword(email,password).then((credentials)=>{
  
         <form className='flex flex-col max-w-[450px] bg-white rounded-md lg:max-w-[350px] shadow-md w-full p-5 md:max-w-[400px] ' onSubmit={handlesubmit}>
         {successMsg&&<>
-                <Typography color="success">{successMsg}</Typography>
+                <Typography variant="success">{successMsg}</Typography>
                 <br></br>
             </>}
 <div className='w-full flex'>

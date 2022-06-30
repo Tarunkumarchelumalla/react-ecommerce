@@ -16,7 +16,7 @@ const [cartid,setCartid]=useState("");
            <p className='text-cyan-500 text-4xl inline border-b-4 border-[#2A2A2A]'> Products</p>
 
         </div>
-        <div className='border-b-4 text-xl text-cyan-500 inline mx-auto py-4 border-[#2A2A2A]'>
+        <div className='border-b-2 text-xl text-cyan-500 inline mx-auto mt-2 border-[#2A2A2A]'>
         men's clothing
             </div>
      
@@ -51,7 +51,7 @@ const [cartid,setCartid]=useState("");
 
             }
             </div>
-            <div className='border-b-4 text-xl text-cyan-500 inline mx-auto py-4 border-[#2A2A2A]'>
+            <div className='border-b-2 text-xl text-cyan-500 inline mx-auto mt-2 border-[#2A2A2A]'>
                   jewelery
             </div>
             <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full '>
@@ -84,7 +84,7 @@ const [cartid,setCartid]=useState("");
 
             }
             </div>
-            <div className='border-b-4  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto py-4 border-[#2A2A2A]'>
+            <div className='border-b-2  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto mt-2 border-[#2A2A2A]'>
               
                   Electronic
             </div>
@@ -118,7 +118,7 @@ const [cartid,setCartid]=useState("");
 
             }
             </div>
-            <div className='border-b-4  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto py-4 border-[#2A2A2A]'>
+            <div className='border-b-2  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto mt-2 border-[#2A2A2A]'>
               
             women's clothing
         </div>

@@ -21,7 +21,12 @@ function Cart({username,cartProducts,length}) {
   //   .catch(err => console.error(err));
   
 
- 
+   var Grantotal=0;
+      cartProducts.map(cart=>
+        Grantotal=Grantotal+cart.TotalProductPrice
+        )   
+       ;
+  
    let cartitem;
   const handle=(cartProducts)=>{
     cartitem=cartProducts
@@ -74,6 +79,7 @@ function Cart({username,cartProducts,length}) {
     <Navbaar username={username} cartProducts={cartProducts}/>
     <div className='flex flex-col max-w-[900px] mx-auto px-8' >
     <p className='text-cyan-500 text-4xl inline border-b-4 border-[#2A2A2A]'> Cart</p>
+
         <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-1  w-full'>
          
      
@@ -83,6 +89,7 @@ function Cart({username,cartProducts,length}) {
                </div>
             </>}
     {cartProducts.map((cartProducts) => (
+        
             <div className='sm:flex  flex-1 rounded px-4 shadow-lg ' key={cartProducts.ID}>
                
                  <div className='flex justify-end cursor-pointer'>
@@ -110,14 +117,56 @@ function Cart({username,cartProducts,length}) {
               <p className='felx py-4 sm:hidden sm:px-4'    > Total: ₹{cartProducts.TotalProductPrice}</p>
               </div>
             </div>
+             
+             
 
             )
             )
 
-
+          
+                
+    
             }
+         
           </div>
+          
+        
           </div>
+          {cartProducts.length > 0 && <>
+            <div className='flex flex-col max-w-[850px] mx-auto px-8 shadow-lg py-8 mb-8 ' >
+            <p className='text-cyan-500 text-4xl inline border-b-2 border-[#2A2A2A]'> Bill</p>
+                <div className='flex flex-col sm:justify-center divide-y  divide-x'>
+                  <div className='flex  divide-x divide-y'>
+                    <div className=' w-[300px] flex sm:w-[800px] '>
+                        <p className='mx-auto'> Products</p>
+                    </div>
+                    <div>
+                    <p className='px-4'> Quantity</p>
+                      </div>
+                      <div>
+                      <p className='px-4'> price</p>
+                      </div>
+                  </div>
+                  {cartProducts.map((cartProducts)=>(
+                    <div className='flex divide-x '>
+                    
+                         <p className='flex px-4 w-[300px] sm:w-[800px]'>{cartProducts.title}:</p>
+                         <p className='px-4 w-[100px] flex justify-center'>{cartProducts.qty} </p>
+                  
+                    <p className='px-4 w-[100px]'>{cartProducts.TotalProductPrice} </p>
+                      
+                    </div>
+               
+                  ))}
+              
+                </div>
+                 <div className='flex flex-col justify-end'>
+                    <p className='flex  justify-end py-4 px-4 '>GrandTotal: ₹{Grantotal}</p>
+                      
+                    <Button variant="contained" style={{"backgroundColor":"rgb(103,232,249)",}} onClick={()=>{alert("Contact Tarun for rest")}}>Checkout</Button>
+                    </div>
+               </div>
+            </>}
     </>
   )
 }

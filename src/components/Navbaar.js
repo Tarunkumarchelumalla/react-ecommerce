@@ -72,7 +72,7 @@ function Navbaar({username,cartProducts}) {
         {username&&<>     <Button  style={{"fontSize":"1.5rem",}} startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>{username}</Button></>
 }
     {!username&&<>
-    <Button  style={{"fontSize":"1.5rem",}}  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>Signup/login</Button></>
+      <Link to="/"><Button  style={{"fontSize":"1.5rem",}}  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>Signup/login</Button></Link></>
     }
                        
         </li>

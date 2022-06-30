@@ -28,8 +28,10 @@ function App() {
           }
       })
   },[])
-var length= cartProducts.length;
-// console.log(length);
+
+
+ 
+
   function GetUsername(){
 
 
@@ -71,13 +73,15 @@ const user = GetCurrentUser();
 
  let Product;
     const handleclick = (product)=>{
+        
         if(user!==null){
             // console.log(product);
+          
             Product=product;
             Product['qty']=1;
             Product['TotalProductPrice']=Product.qty*Product.price;
             db.collection('Cart ' + user).doc(product.ID).set(Product).then(()=>{
-                console.log('successfully added to cart');
+                alert('successfully added to cart');
             })
 
         }
