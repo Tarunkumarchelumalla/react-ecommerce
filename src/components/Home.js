@@ -10,14 +10,14 @@ import Footer from './Footer';
 import {auth,db} from '../components/firebase/config'
 import {useEffect,useState} from 'react'
 
-function Home({handleclick,username}) {
+function Home({handleclick,username,cartProducts}) {
   
 
   return (
     <>
    
     <div className='h-[100px]'>
-  <Navbaar  username={username}/>
+  <Navbaar  username={username} cartProducts={cartProducts}/>
   </div>
   <div></div>
   <div className='flex flex-col  mx-auto h-screen max-w-[1100px] px-8 '>

@@ -8,6 +8,28 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import {useNavigate,Link} from 'react-router-dom'
 function App() {
+  const [cartProducts, setCartProducts]=useState([]);
+
+  // getting cart products from firestore collection and updating the state
+  useEffect(()=>{
+      auth.onAuthStateChanged(user=>{
+          if(user){
+              db.collection('Cart ' + user.uid).onSnapshot(snapshot=>{
+                  const newCartProduct = snapshot.docs.map((doc)=>({
+                      ID: doc.id,
+                      ...doc.data(),
+                  }));
+                  setCartProducts(newCartProduct);     
+                             
+              })
+          }
+          else{
+              console.log('user is not signed in to retrieve cart');
+          }
+      })
+  },[])
+var length= cartProducts.length;
+// console.log(length);
   function GetUsername(){
 
 
@@ -64,6 +86,7 @@ const user = GetCurrentUser();
         }
         
     }
+ 
   return (
     <>
  
@@ -73,8 +96,8 @@ const user = GetCurrentUser();
         <Route path="/" element={ <Signup/> } />
         <Route path="/Login" element={ <Login/> } />
      
-        <Route path="/Home" element={ <Home handleclick={handleclick} username={username}/> } />
-        <Route path="/Cart" element={ <Cart  username={username}/> } />
+        <Route path="/Home" element={ <Home handleclick={handleclick} username={username} cartProducts={cartProducts}/> } />
+        <Route path="/Cart" element={ <Cart  username={username} cartProducts={cartProducts} /> } />
 
       </Routes>
     

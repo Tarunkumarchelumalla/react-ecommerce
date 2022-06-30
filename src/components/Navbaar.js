@@ -7,7 +7,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import {Link} from 'react-router-dom';
 import {auth,db} from '../components/firebase/config'
 import {useNavigate} from 'react-router-dom'
-function Navbaar({username}) {
+function Navbaar({username,cartProducts}) {
 
   const history=useNavigate();
   const handleLogout=()=>{
@@ -37,7 +37,7 @@ function Navbaar({username}) {
         
         </li>
         <li className=''>
-        <Button  startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>} onClick={()=>history("/Cart")}></Button>
+        <Button  startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>} onClick={()=>history("/Cart")}>{cartProducts.length}</Button>
         </li>
         <li className='' >
           {username&&<>     <Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>{username}</Button></>
@@ -65,7 +65,7 @@ function Navbaar({username}) {
         
         </li>
         <li className='py-4'>
-        <Button  style={{"fontSize":"1.5rem",}} startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary" style={{"fontSize":"1.5rem",}}/>} onClick={()=>history("/Cart")}> cart</Button>
+        <Button  style={{"fontSize":"1.5rem",}} startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary" style={{"fontSize":"1.5rem",}}/>} onClick={()=>history("/Cart")}>{cartProducts.length}</Button>
      
         </li>
         <li className='py-4' >
