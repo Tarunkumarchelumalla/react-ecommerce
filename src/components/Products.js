@@ -5,9 +5,7 @@ import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined'
 import { Data } from './Data'
 
 function Products({handleclick}) {
-  const datsda=[1,2,3,4,5];
 
-const [cartid,setCartid]=useState("");
  
   return (
     <>
