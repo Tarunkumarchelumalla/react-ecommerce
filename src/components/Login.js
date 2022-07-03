@@ -10,13 +10,14 @@ import { Typography } from '@mui/material';
 
 import  { useState,useEffect} from 'react'
 const Login = () => {
-
+const[isLoadin,setIsLoadin]=useState(false);
   const[email,setEmail]=useState('');
   const [password,setPassword]=useState('');
   const [errorMsg, setErrorMsg]=useState('');
   const [successMsg, setSuccessMsg]=useState('');
   const history=useNavigate();
   const handleLogin=(e)=>{
+    setIsLoadin(true)
     e.preventDefault();
     // console.log(email, password);
     auth.signInWithEmailAndPassword(email,password).then(()=>{
@@ -55,7 +56,7 @@ const Login = () => {
         <TextField variant='standard' color="secondary" label="Enter Password" onChange={(e)=>{setPassword(e.target.value)}} value={password} ></TextField>
         </div>
 <div className='py-2 w-full flex flex-col'> 
-<Button variant="contained" style={{"backgroundColor":"rgb(6 182 212)",}} className="bg-cyan-500" type='submit'>Login</Button> 
+<Button variant="contained" style={{"backgroundColor":"rgb(6 182 212)",}} className="bg-cyan-500" type='submit' disabled={isLoadin}>Login</Button> 
 <div className='flex justify-between'> <div>
    <Checkbox color='primary'/><span className='py-2'>rememberme</span> 
    </div>

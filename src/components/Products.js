@@ -1,164 +1,198 @@
-import React, { useState } from 'react'
-import {CardMedia,CardContent,CardActions,Button,Card} from '@mui/material'
-import { Typography } from '@mui/material'
-import ShoppingCartOutlined from '@mui/icons-material/ShoppingCartOutlined'
-import { Data } from './Data'
+import React, { useState } from "react";
+import {
+  CardMedia,
+  CardContent,
+  CardActions,
+  Button,
+  Card,
+} from "@mui/material";
+import { Typography } from "@mui/material";
+import ShoppingCartOutlined from "@mui/icons-material/ShoppingCartOutlined";
+import { Data } from "./Data";
 
-function Products({handleclick}) {
-
- 
+function Products({ handleclick }) {
   return (
     <>
-    <div className='w-full mt-4 flex flex-col py-2 justify-around  px-4'>
+      <div className="w-full mt-4 flex flex-col py-2 justify-around  px-4" name="product">
         <div>
-           <p className='text-cyan-500 text-4xl inline border-b-4 border-[#2A2A2A]'> Products</p>
-
+          <p className="text-cyan-500 text-4xl inline border-b-4 border-[#2A2A2A]">
+            {" "}
+            Products
+          </p>
         </div>
-        <div className='border-b-2 text-xl text-cyan-500 inline mx-auto mt-2 border-[#2A2A2A]'>
-        men's clothing
-            </div>
-     
-       
-        <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full '>
-        
-        {Data.filter((currElement)=>
-          currElement.category==="men's clothing"
+        <div className="border-b-2 text-xl text-cyan-500 inline mx-auto mt-2 py-2 border-[#2A2A2A]">
+          Men's clothing
+        </div>
 
-        
-        ).map((curr) => (
-            <div className='flex flex-col justify-around rounded w-full   px-4 shadow-lg ' key={curr.id}>
-               
-                <div className=''   >
-              <img  src={curr.image}width="35%" />
-               
+        <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full ">
+          {Data.filter(
+            (currElement) => currElement.category === "men's clothing"
+          ).map((curr) => (
+            <div
+              className="flex flex-col justify-around rounded w-full   px-4 shadow-lg "
+              key={curr.id}
+            >
+              <div className="">
+                <img src={curr.image} width="35%" />
               </div>
-              <div className=''>
-              <p className='py-2 t '   style={{"fontSize":"12px"}}>{curr.description}</p>
+              <p  style={{ font: "bold" }}>
+                  {curr.title}
+                </p>
+              <div className="">
+                <p className="py-2  " style={{ fontSize: "12px" }}>
+                  {curr.description}
+                </p>
               </div>
               <div>
-              <p className=' '    >Price: ₹{curr.price}</p>
+                <p className=" ">Price: ₹{curr.price}</p>
               </div>
-              <div className='flex justify-center py-2'>
-              <Button   variant="contained" color="primary" onClick={()=>handleclick(curr)} style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Add to card</Button>
+              <div className="flex justify-center py-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleclick(curr)}
+                  style={{
+                    backgroundColor: "rgb(103 232 249)",
+                    color: "#2A2A2A",
+                  }}
+                >
+                  {" "}
+                  Add to card
+                </Button>
               </div>
             </div>
-
-            )
-            )
-
-
-            }
-            </div>
-            <div className='border-b-2 text-xl text-cyan-500 inline mx-auto mt-2 border-[#2A2A2A]'>
-                  jewelery
-            </div>
-            <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full '>
-        
-        {Data.filter(currElement=>
-          currElement.category==="jewelery"
-
-        
-        ).map(curr => (
-            <div className='flex flex-col justify-around rounded w-full   px-4 shadow-lg'  key={curr.id}>
-               
-                <div className='' >
-              <img  src={curr.image} width="35%" />
-               
+          ))}
+        </div>
+        <div className="border-b-2 text-xl text-cyan-500 inline mx-auto mt-2 border-[#2A2A2A]" name="prod">
+          jewelery
+        </div>
+        <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full ">
+          {Data.filter(
+            (currElement) => currElement.category === "jewelery"
+          ).map((curr) => (
+            <div
+              className="flex flex-col justify-around rounded w-full   px-4 shadow-lg"
+              key={curr.id}
+            >
+              <div className="">
+                <img src={curr.image} width="35%" />
               </div>
-              <div className=''>
-              <p className='py-2 t '  style={{"fontSize":"12px"}}>{curr.description}</p>
+              <p  style={{ font: "bold" }}>
+                  {curr.title}
+                </p>
+              <div className="">
+                <p className="py-2 t " style={{ fontSize: "12px" }}>
+                  {curr.description}
+                </p>
               </div>
               <div>
-              <p className=' ' >Price: ₹{curr.price}</p>
+                <p className=" ">Price: ₹{curr.price}</p>
               </div>
-              <div className='flex justify-center py-2'>
-              <Button variant="contained" color="primary" onClick={()=>handleclick(curr)} style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Add to card</Button>
+              <div className="flex justify-center py-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleclick(curr)}
+                  style={{
+                    backgroundColor: "rgb(103 232 249)",
+                    color: "#2A2A2A",
+                  }}
+                >
+                  {" "}
+                  Add to card
+                </Button>
               </div>
             </div>
-
-            )
-            )
-
-
-            }
-            </div>
-            <div className='border-b-2  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto mt-2 border-[#2A2A2A]'>
-              
-                  Electronic
-            </div>
-            <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full '>
-                
-        {Data.filter(currElement=>
-          currElement.category==="electronics"
-
-        
-        ).map(curr => (
-            <div className='flex flex-col justify-around rounded w-full   px-4 shadow-lg'  key={curr.id}>
-               
-                <div className='' >
-              <img  src={curr.image} width="35%" />
-               
+          ))}
+        </div>
+        <div className="border-b-2  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto mt-2 border-[#2A2A2A]">
+          Electronic
+        </div>
+        <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full ">
+          {Data.filter(
+            (currElement) => currElement.category === "electronics"
+          ).map((curr) => (
+            <div
+              className="flex flex-col justify-around rounded w-full   px-4 shadow-lg"
+              key={curr.id}
+            >
+              <div className="">
+                <img src={curr.image} width="35%" />
               </div>
-              <div className=''>
-              <p className='py-2 t '  style={{"fontSize":"12px"}}>{curr.description}</p>
+              <p  style={{ font: "bold" }}>
+                  {curr.title}
+                </p>
+              <div className="">
+                <p className="py-2 t " style={{ fontSize: "12px" }}>
+                  {curr.description}
+                </p>
               </div>
               <div>
-              <p className=' ' >Price: ₹{curr.price}</p>
+                <p className=" ">Price: ₹{curr.price}</p>
               </div>
-              <div className='flex justify-center py-2'>
-              <Button variant="contained" color="primary"  onClick={()=>handleclick(curr)}style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Add to card</Button>
+              <div className="flex justify-center py-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleclick(curr)}
+                  style={{
+                    backgroundColor: "rgb(103 232 249)",
+                    color: "#2A2A2A",
+                  }}
+                >
+                  {" "}
+                  Add to card
+                </Button>
               </div>
             </div>
-
-            )
-            )
-
-
-            }
-            </div>
-            <div className='border-b-2  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto mt-2 border-[#2A2A2A]'>
+          ))}
+        </div>
+        <div className="border-b-2  text-cyan-500 text-xl  border-[#2A2A2A]inline mx-auto mt-2 border-[#2A2A2A]">
+          women's clothing
+        </div>
+        <div className="grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full ">
+          {Data.filter(
+            (currElement) => currElement.category === "women's clothing"
+          ).map((curr) => (
+            <div
+              className="flex flex-col justify-around rounded w-full   px-4 shadow-lg"
+              key={curr.id}
+            >
               
-            women's clothing
-        </div>
-        <div className='grid grid-cols-1 gap-8 py-8 sm:grid-cols-3  w-full '>
-            
-    {Data.filter(currElement=>
-      currElement.category==="women's clothing"
-
-    
-    ).map(curr => (
-        <div className='flex flex-col justify-around rounded w-full   px-4 shadow-lg'  key={curr.id}>
-           
-            <div className=''   >
-          <img src={curr.image} width="35%" />
-           
-          </div>
-          <div className=''>
-          <p className='py-2 t '  style={{"fontSize":"12px"}}>{curr.description}</p>
-          </div>
-          <div>
-          <p className=' '  >Price: ₹{curr.price}</p>
-          </div>
-          <div className='flex justify-center py-2'>
-          <Button variant="contained" color="primary" onClick={()=>handleclick(curr)} style={{"backgroundColor":"rgb(103 232 249)","color":"#2A2A2A"}}> Add to card</Button>
-          </div>
-        </div>
-
-        )
-        )
-
-
-        }
-        </div>
-           
-              
-            
+              <div className="">
+                <img src={curr.image} width="35%" />
               </div>
-              
-                 </>
-
-  )
-
+              <p  style={{ font: "bold" }}>
+                  {curr.title}
+                </p>
+              <div className="">
+                <p className="py-2 t " style={{ fontSize: "12px" }}>
+                  {curr.description}
+                </p>
+              </div>
+              <div>
+                <p className=" ">Price: ₹{curr.price}</p>
+              </div>
+              <div className="flex justify-center py-2">
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={() => handleclick(curr)}
+                  style={{
+                    backgroundColor: "rgb(103 232 249)",
+                    color: "#2A2A2A",
+                  }}
+                >
+                  {" "}
+                  Add to card
+                </Button>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
 }
 
-export default Products
+export default Products;

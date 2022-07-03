@@ -4,10 +4,12 @@ import Button from '@mui/material/Button';
 import CloseIcon from '@mui/icons-material/Close';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
-import {Link} from 'react-router-dom';
+import {Link } from 'react-router-dom';
 import {auth,db} from '../components/firebase/config'
 import {useNavigate} from 'react-router-dom'
 import Badge from '@mui/material/Badge';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { Link as Lin } from 'react-scroll';
 function Navbaar({username,cartProducts}) {
 
   const history=useNavigate();
@@ -31,17 +33,18 @@ function Navbaar({username,cartProducts}) {
         <Button onClick={()=>history("/Home")}>Home</Button>
         </li>
         <li>
-        <Button>About</Button>
+        <Lin to="contact"  smooth={true}  duration={500}>
+        <Button>contact</Button>
+        </Lin>
+       
         </li>
-        <li>
-        <Button   onClick={handleLogout}>Logout</Button>
         
-        </li>
+     
         <li className=''>
        
         <Button ><Badge color="primary" badgeContent={cartProducts.length} showZero onClick={()=>history("/Cart")} max={10}>
         <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>
-            </Badge>
+            </Badge>Cart
             </Button>
         </li>
         <li className='' >
@@ -52,28 +55,34 @@ function Navbaar({username,cartProducts}) {
     }
                        
         </li>
+        <li>
+        <Button  startIcon={<PowerSettingsNewIcon/>} onClick={handleLogout}>Logout</Button>
+        
+        </li>
     </ul>
     <ul>
 
     </ul>
     {/* mobile menu */}
-    <div className={!nav ?"hidden":'absolute top-0 m-0 left-0 w-full h-screen bg-[#2A2A2A] flex flex-col justify-center z-[10000000000] items-center text-white'}>
+    <div className={!nav ?"hidden":' fixed top-0 m-0 left-0 w-full h-screen bg-[#2A2A2A] flex flex-col justify-center z-[10000000000] items-center text-white'}>
     <ul >
       <li className=' py-4 '>
+      <Lin to="home"  smooth={true}  duration={500} onClick={handlemenu}>
         <Button style={{"fontSize":"1.5rem",}} onClick={()=>history("/Home")}>Home</Button>
+        </Lin>
         </li>
-        <li className='py-4'>
-        <Button  style={{"fontSize":"1.5rem",}}>About</Button>
+        <li>
+        <Lin to="contact"  smooth={true}  duration={500} onClick={handlemenu}>
+        <Button  style={{"fontSize":"1.5rem",}}>contact</Button>
+        </Lin>
+       
         </li>
-        <li className='py-4'>
-          <Button  style={{"fontSize":"1.5rem",}} onClick={handleLogout}>Logout</Button>
-        
-        </li>
+       
         <li className='py-4'>
         {/* <Button  style={{"fontSize":"1.5rem",}} startIcon={ <ShoppingCartOutlinedIcon variant="Outlined" color="primary" style={{"fontSize":"1.5rem",}}/>} onClick={()=>history("/Cart")}>{cartProducts.length}</Button> */}
-        <Button> <Badge  color="primary" badgeContent={cartProducts.length} showZero onClick={()=>history("/Cart")} max={10}>
+        <Button style={{"fontSize":"1.5rem",}}> <Badge  color="primary" badgeContent={cartProducts.length} showZero onClick={()=>history("/Cart")} max={10}>
         <ShoppingCartOutlinedIcon variant="Outlined" color="primary"/>
-            </Badge></Button>
+            </Badge> Cart</Button>
      
         </li>
         <li className='py-4' >
@@ -84,7 +93,12 @@ function Navbaar({username,cartProducts}) {
     }
                        
         </li>
+        <li className='py-4'>
+          <Button startIcon={<PowerSettingsNewIcon style={{"fontSize":"1.5rem",}} />} style={{"fontSize":"1.5rem",}} onClick={handleLogout}>Logout</Button>
+        
+        </li>
     </ul>
+   
     </div>
      <ul className='flex align-middle  sm:hidden'>
       <li className='z-[100000000001] bg-[#2A2A2A] p-2'> 
