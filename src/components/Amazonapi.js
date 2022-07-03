@@ -22,27 +22,27 @@ function Amazonapi({handleamazon}) {
      setVerify(true);
     setMobile([]);
     console.log("fired");
-    // fetch(
-    //   `https://amazon24.p.rapidapi.com/api/product?categoryID=aps&keyword=${searchValue}&country=IND&page=1 `,
-    //   options
-    // )
-    //   .then((response) => response.json())
+    fetch(
+      `https://amazon24.p.rapidapi.com/api/product?categoryID=aps&keyword=${searchValue}&country=IND&page=1 `,
+      options
+    )
+      .then((response) => response.json())
 
-    //   .then((response) => {
-    //     console.log(response);
-    //     data = response.docs.slice(0, 20);
-    //     setMobile(data);
+      .then((response) => {
+        console.log(response);
+        data = response.docs.slice(0, 20);
+        setMobile(data);
 
-    //     setTimeout(() => {
-    //       if (mobile === null) {
-    //         setNodata(!nodata);
-    //       }
-    //     }, 3000);
-    //   })
+        setTimeout(() => {
+          if (mobile === null) {
+            setNodata(!nodata);
+          }
+        }, 3000);
+      })
 
-    //   .catch((err) => console.error(err));
-    // console.log("complete");
-    // console.log(nodata)
+      .catch((err) => console.error(err));
+    console.log("complete");
+    console.log(nodata)
   };
 
 
