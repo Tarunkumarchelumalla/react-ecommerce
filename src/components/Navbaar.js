@@ -47,8 +47,8 @@ function Navbaar({username,cartProducts}) {
             </Badge>Cart
             </Button>
         </li>
-        <li className='' >
-          {username&&<>     <Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>{username}</Button></>
+        <li className='flex mt-2' >
+        {username &&<>      <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/><p className='text-cyan-300 text-sm mb-2 '>{username.replace(/\s+/g, '')}</p></>
 }
     {!username&&
     <Link to="/"><Button  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"/>}>Signup/login</Button></Link>
@@ -85,10 +85,10 @@ function Navbaar({username,cartProducts}) {
             </Badge> Cart</Button>
      
         </li>
-        <li className='py-4' >
-        {username&&<>     <Button  style={{"fontSize":"1.5rem",}} startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>{username}</Button></>
+        <li className=' flex  ' >
+        {username &&<>      <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/><p className='text-cyan-300 text-xl flex'>{username}</p></>
 }
-    {!username&&<>
+    {!username &&<>
       <Link to="/"><Button  style={{"fontSize":"1.5rem",}}  startIcon={ <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/>}>Signup/login</Button></Link></>
     }
                        

@@ -1,19 +1,20 @@
 import React, { useState } from "react";
 // #3E95C5 blue #2A2A2A black #999999 background #ef5350
-import { FaGoogle, FaFacebook, FaTwitter } from "react-icons/fa";
+import { FaFacebook, FaTwitter } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
-import { auth, db } from "../components/firebase/config";
+import { auth, db,provider } from "../components/firebase/config";
+
 import { useNavigate, Link } from "react-router-dom";
 import { Typography } from "@mui/material";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [conpwd, setConpwd] = useState("");
-  const[isLoadin,setIsLoadin]=useState(false);
+  const [isLoadin, setIsLoadin] = useState(false);
   const history = useNavigate();
 
   const [errorMsg, setErrorMsg] = useState("");
@@ -23,7 +24,7 @@ const Signup = () => {
     e.preventDefault();
     if (password == conpwd) {
       // console.log(name,email,password,conpwd);
-      setIsLoadin(true)
+      setIsLoadin(true);
       auth
         .createUserWithEmailAndPassword(email, password)
         .then((credentials) => {
@@ -35,7 +36,6 @@ const Signup = () => {
               Name: name,
               Email: email,
               Password: password,
-              
             })
             .then(() => {
               setSuccessMsg(
@@ -47,6 +47,7 @@ const Signup = () => {
               setConpwd("");
               setErrorMsg("");
               setTimeout(() => {
+                setIsLoadin(false);
                 setSuccessMsg("");
                 history("/Login");
               }, 3000);
@@ -55,11 +56,59 @@ const Signup = () => {
         })
         .catch((error) => {
           setErrorMsg(error.message);
+          setIsLoadin(false)
         });
     } else {
       setErrorMsg("password doesnot match");
     }
   };
+//  Singin with google
+const google=()=>{
+auth
+  .signInWithPopup(provider)
+  .then((result) => {
+    /** @type {firebase.auth.OAuthCredential} */
+    var credential = result.credential;
+    
+    // This gives you a Google Access Token. You can use it to access the Google API.
+    var token = credential.accessToken;
+    // The signed-in user info.
+    var user = result.user;
+
+
+    db.collection("users")
+    .doc(user.uid)
+    .set({
+      Name: user.displayName,
+      Email: user.email,
+    
+    })  .then(() => {
+      setSuccessMsg(
+        "Signup Successfull. You will now automatically get redirected to Home"
+      );
+      setTimeout(() => {
+        setIsLoadin(false);
+        setSuccessMsg("");
+        history("/home");
+      }, 3000);
+    })
+    // ...
+  }).catch((error) => {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    // The email of the user's account used.
+    var email = error.email;
+    console.log(errorMessage)
+    setErrorMsg(errorMessage)
+    // The firebase.auth.AuthCredential type that was used.
+    var credential = error.credential;
+    
+    // ...
+  });
+
+}
+
   return (
     <>
       <div className=" bg-gradient-to-bl from-cyan-500 to ...  flex justify-center shadow-current shadow-2xl">
@@ -135,8 +184,15 @@ const Signup = () => {
                 className="bg-cyan-300"
                 type="submit"
                 disabled={isLoadin}
+                startIcon={
+                  isLoadin && (
+                    <>
+                      <CircularProgress color="secondary"size={30} />
+                   </>
+                  )
+                }
               >
-                Signup
+                {!isLoadin && <>Signup</>}
               </Button>
             </div>
             <div className="flex w-full py-4 ">
@@ -153,6 +209,7 @@ const Signup = () => {
               <FcGoogle
                 className=" mx-2 cursor-pointer hover:scale-125 duration-300"
                 size={30}
+                onClick={google}
               />
               <FaTwitter
                 className="  mx-2  cursor-pointer text-[#1DA1F2] hover:scale-125 duration-300"

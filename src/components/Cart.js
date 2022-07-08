@@ -13,18 +13,6 @@ import RemoveOutlinedIcon from "@mui/icons-material/RemoveOutlined";
 import AddOutlinedIcon from "@mui/icons-material/AddOutlined";
 import CloseIcon from "@mui/icons-material/Close";
 function Cart({ username, cartProducts, length }) {
-  // const options = {
-  //   method: 'GET',
-  //   headers: {
-  //     'X-RapidAPI-Key': '0885d0ac0dmsh5304f79b1ca551bp1e114fjsnba355115d9c9',
-  //     'X-RapidAPI-Host': 'ecommerce-scraper.p.rapidapi.com'
-  //   }
-  // };
-
-  // fetch('https://ecommerce-scraper.p.rapidapi.com/api/posts?per_page=10&page=1&categories=0&details=0', options)
-  //   .then(response => response.json())
-  //   .then(response => console.log(response))
-  //   .catch(err => console.error(err));
 
   var Grantotal = 0;
   cartProducts.map((cart) => (Grantotal = Grantotal + cart.TotalProductPrice));

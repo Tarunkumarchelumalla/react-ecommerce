@@ -37,6 +37,7 @@ function App() {
             .doc(user.uid)
             .get()
             .then((snapshot) => {
+              // var userj=snapshot.data().Name.replace(/\s+/g, '');
               setUserName(snapshot.data().Name);
             });
         } else {
