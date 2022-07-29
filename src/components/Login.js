@@ -29,7 +29,9 @@ const Login = () => {
         setEmail("");
         setPassword("");
         setErrorMsg("");
+      
         setTimeout(() => {
+          setIsLoadin(false);
           setSuccessMsg("");
           history("/home");
         }, 3000);
@@ -37,6 +39,7 @@ const Login = () => {
       .catch((error) => setErrorMsg(error.message));
   };
   const google = () => {
+    setIsLoadin(true);
     auth
       .signInWithPopup(provider)
       .then((result) => {
@@ -56,8 +59,9 @@ const Login = () => {
           })
           .then(() => {
             setSuccessMsg(
-              "Signup Successfull. You will now automatically get redirected to Home"
+              "Sigin Successfull. You will now automatically get redirected to Home"
             );
+            setErrorMsg("");
             setTimeout(() => {
               setIsLoadin(false);
               setSuccessMsg("");

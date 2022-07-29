@@ -64,6 +64,7 @@ const Signup = () => {
   };
 //  Singin with google
 const google=()=>{
+  setIsLoadin(true)
 auth
   .signInWithPopup(provider)
   .then((result) => {
@@ -84,8 +85,9 @@ auth
     
     })  .then(() => {
       setSuccessMsg(
-        "Signup Successfull. You will now automatically get redirected to Home"
+        "Sigin Successfull. You will now automatically get redirected to Home"
       );
+      setErrorMsg("");
       setTimeout(() => {
         setIsLoadin(false);
         setSuccessMsg("");

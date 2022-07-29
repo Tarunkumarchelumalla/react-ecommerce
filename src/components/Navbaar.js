@@ -23,7 +23,7 @@ function Navbaar({username,cartProducts}) {
 
   return (
 
-    <div className=' w-full mx-auto h-[50px] px-4 flex bg-white text-[#2A2A2A] m-4  sm:px-8 '>
+    <div className=' w-full mx-auto h-[50px] px-4 flex bg-white text-[#2A2A2A] m-4   '>
     <div className='w-full'>
     <p className=' inline text-4xl  text-cyan-500 border-b-2 p-1 border-[#2A2A2A] cursor-pointer sm:text-2xl md:text-4xl'>Shop Here</p>
     </div>
@@ -47,7 +47,7 @@ function Navbaar({username,cartProducts}) {
             </Badge>Cart
             </Button>
         </li>
-        <li className='flex mt-2' >
+        <li className={username ?"flex mt-2":"flex"} >
         {username &&<>      <AccountCircleOutlinedIcon variant="Outlined" color="primary"  style={{"fontSize":"1.5rem",}}/><p className='text-cyan-300 text-sm mb-2 '>{username.replace(/\s+/g, '')}</p></>
 }
     {!username&&

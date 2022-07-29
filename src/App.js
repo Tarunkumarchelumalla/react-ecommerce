@@ -8,8 +8,11 @@ import Home from "./components/Home";
 import Cart from "./components/Cart";
 import { useNavigate, Link } from "react-router-dom";
 import Amazonapi from "./components/Amazonapi";
+import Alert from '@mui/material/Alert';
 function App() {
   const [cartProducts, setCartProducts] = useState([]);
+  const [alertmsg,setAlertmsg]=useState("");
+  const[cload,setCload]=useState(false);
 
   // getting cart products from firestore collection and updating the state
   useEffect(() => {
@@ -23,7 +26,7 @@ function App() {
           setCartProducts(newCartProduct);
         });
       } else {
-        console.log("user is not signed in to retrieve cart");
+     
       }
     });
   }, []);
@@ -67,6 +70,7 @@ function App() {
 
   let Product;
   const handleclick = (product) => {
+    setCload(!cload);
     if (user !== null) {
       console.log(product);
 
@@ -77,7 +81,12 @@ function App() {
         .doc(product.ID)
         .set(Product)
         .then(() => {
-          alert("successfully added to cart");
+          setAlertmsg("Item added SuccessFully")
+          setTimeout(() => {
+            setAlertmsg("")
+           
+          }, 1000);
+          setCload(false);
         });
     } else {
       history("/login");
@@ -85,7 +94,7 @@ function App() {
   };
   let amazonproduct;
   const handleamazon = (amazeproduct) => {
-
+    setCload(!cload);
     if (user !== null) {
       // console.log(product);
 
@@ -102,8 +111,13 @@ function App() {
         .doc(amazonproduct.ID)
         .set(amazonproduct)
         .then(() => {
-          alert("successfully added to cart");
+          setAlertmsg("Item added SuccessFully")
+          setTimeout(() => {
+            setAlertmsg("")
+           
+          }, 1800);
         });
+        setCload(false);
     } else {
       history("/login");
     }
@@ -124,6 +138,8 @@ function App() {
                 username={username}
                 cartProducts={cartProducts}
                 handleamazon={handleamazon}
+                alertmsg={alertmsg}
+                cload={cload}
               />
             }
           />

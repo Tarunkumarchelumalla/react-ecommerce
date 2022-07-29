@@ -61,12 +61,12 @@ function Amazonapi({handleamazon}) {
           style={{color:"#06B6D4"}}
           onChange={(e) => {
             setSearchValue(e.target.value);
-            
+       
           }
         }
           value={searchValue}
+      
           required
-
         /></div>
         <span className="px-2 mt-4">
           <Button
@@ -96,14 +96,13 @@ function Amazonapi({handleamazon}) {
             >
               <div className="">
                 <img src={curr.product_main_image_url} width="35%" />
+                {/* <img src={curr.product_detail_url} width="35%" /> */}
               </div>
               <div className="">
                 <p className="py-2 " style={{ fontSize: "12px" }}>
                   {curr.product_title}
                 </p>
-                <p className="py-2  " style={{ fontSize: "12px" }}>
-                  {curr.product_detail_url}
-                </p>
+               
               </div>
               <div>
                 {curr.app_sale_price === null && <> Price: ₹1000</>}
@@ -111,7 +110,7 @@ function Amazonapi({handleamazon}) {
                   <>
                     {" "}
                     <p className=" ">
-                      Price: {curr.app_sale_price_currency}
+                      Price: ₹
                       {curr.app_sale_price}
                     </p>
                   </>
